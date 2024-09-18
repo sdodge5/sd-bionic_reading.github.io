@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bionic Reading - Every Fifth Word</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .output {
+      margin-top: 20px;
+    }
+    b {
+      font-weight: bold;
+      color: black;
+    }
+    button {
+      font-size: 18px;
+      background-color: #ADD8E6;
+      border-radius: 25px;
+      border-color: #89CFF0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bionic Reading</h1>
+  <p>This reading style claims to help readers—particularly those with attention issues—focus on reading an digesting text at a faster pace. This is done, either by bolding every fifth word or bolding the first 4-5 letters in a word.</p>
+  <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+  <button onclick="boldFifthWord()">Bold Every Fifth Word</button>
+
+  <div class="output">
+    <h3>Processed Text Result:</h3>
+    <p id="outputText"></p>
+  </div>
+
+  <script>
+    function boldFifthWord() {
+      const inputText = document.getElementById('inputText').value;
+      const words = inputText.split(' ');
+      const outputText = words.map((word, index) => {
+        return (index + 1) % 5 === 0 ? `<b>${word}</b>` : word;
+      }).join(' ');
+      document.getElementById('outputText').innerHTML = outputText;
+    }
+  </script>
+</body>
+</html>
